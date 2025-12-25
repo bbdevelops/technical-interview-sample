@@ -36,9 +36,14 @@ class BirthdayCake
       return "blown out"
     end
   end
-
+  def light_candles
+    self.lit = true
+  end
+  def blow_out_candles
+    self.lit = false
+  end
   def greet
-    "Happy #{self.age.ordinalize} Birdday!"
+    "Happy #{self.age.ordinalize} Birthday!"
   end
 
   def sing
@@ -50,16 +55,21 @@ class BirthdayCake
   end
 
   def BirthdayCake.celebrate(age)
-    birthday_cake = Birthdaycake.new(age)
+    birthday_cake = BirthdayCake.new(age)
+      # First error cake in BirthdayCake was not capitalized. Error: ./birthday_cake.rb:53:in 'BirthdayCake.celebrate': uninitialized constant BirthdayCake::Birthdaycake (NameError)
     puts birthday_cake.greet
     puts birthday_cake.to_s
     puts "Lighting candles..."
-    birthday_cake.light_candles
+    birthday_cake.light_candles 
+      # Second error, light_candles was not defined. Error: ./birthday_cake.rb:57:in 'BirthdayCake.celebrate': undefined method 'light_candles' for an instance of BirthdayCake (NoMethodError)
     puts birthday_cake.to_s
     puts "Singing happy birthday..."
-    puts birthday_cake.sign
+    puts birthday_cake.sing 
+      # Third error, sing was spelled wrong. Error: ./birthday_cake.rb:62:in 'BirthdayCake.celebrate': undefined method 'sign' for an instance of BirthdayCake (NoMethodError)
     puts "Blowing out candles..."
-    birth_cake.blow_out_candles
+    birthday_cake.blow_out_candles 
+      # Fourth error, birthday_cake was spelled wrong. Error: birthday_cake.rb:64:in 'BirthdayCake.celebrate': undefined local variable or method 'birth_cake' for class BirthdayCake (NameError)
+      # Fifth error, blow_out_candles was undefined. Error: birthday_cake.rb:64:in 'BirthdayCake.celebrate': undefined method 'blow_out_candles' for an instance of BirthdayCake (NoMethodError)   
     puts birthday_cake.to_s
 
     birthday_cake
